@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="doctor.css">
+    <title>Doctors</title>
+</head>
+<body>
+        <header>
+              <div id="heading">
+                <nav>
+                    <section>
+                        <a href="index.html"  id="brand">
+                                <h1>DOCTOR</h1> </a>
+                </section>
+                    <ul id="nav">
+                        <li><a class="nav_item" href="index.html">HOME</a></li>
+                        <li><a class="nav_item" href="speciality.html">SPECIALITIES</a></li>
+                        <li><a class="nav_item" href="doctor.html">DOCTORS</a></li>
+                        <li><a class="nav_item" href="insurance.html">INSURANCE PLANS</a></li>
+                    </ul>
+                 </nav>
+              </div>
+        </header>
+		<hr>
+        <div class="body-structure">
+                <h1 id="heading1">LIST OF DOCTORS</h1>
+                <div id="practice" style="margin-top:4.4%;">
+                </div>
+      </div>
+      <footer class="foot">
+          <div class="divider"></div>
+      <div class="copyright">
+          © 2019 Copyright to DOCTOR
+      </div>
+  </footer>  
+      <script>
+	        window.onscroll = function() {scrollFunction()};
+
+          function scrollFunction() {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+              document.getElementById("heading").style.fontSize = "25px";
+            document.getElementById("brand").style.fontSize = "40px";
+            
+            } else {
+              document.getElementById("heading").style.fontSize = "28px";
+            document.getElementById("brand").style.fontSize = "40px";
+            }
+          }
+         var url = 'https://api.betterdoctor.com/2016-03-01/practices?name=terry&skip=0&limit=10&user_key=2ca81ff4b2094d063f6fc80751950488';
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET',url)
+        var practice = document.getElementById("practice"); 
+        xhr.onreadystatechange = test
+        function test()
+         {
+           if(this.status==200 && this.readyState==4){
+             
+                 
+                 var obj = JSON.parse(xhr.responseText);
+                 for (var i = 0; i < 6; i++) {
+                        var div = document.createElement("div");
+                        div.setAttribute("id", "practicebio");
+                    
+                        var h1 = document.createElement("h1");
+                        h1.innerHTML =
+                            obj.data[i].doctors[0].profile.first_name +
+                            " " +
+                            obj.data[i].doctors[0].profile.last_name;
+                        div.append(h1);
+                        
+                        var p = document.createElement("p");
+                        p.innerHTML =
+                            obj.data[i].visit_address.street +
+                            " " +
+                            obj.data[i].visit_address.city +
+                            " " +
+                            obj.data[i].visit_address.state;
+                        div.append(p);
+                        var img = document.createElement("img");
+                        img.setAttribute("src", obj.data[i].doctors[0].profile.image_url);
+                        img.setAttribute("style","border-radius:80px")
+                        var p1 = document.createElement("p");
+                        p1.setAttribute("style", "font-size:40px");
+                        p1.append(" ");
+                        p1.append(img);
+                        div.append(p1);
+                        
+                        var p3 = document.createElement("p");
+                        p3.setAttribute("style", "font-size:30px");
+                        p3.append(" ");
+                        p3.append(obj.data[i].doctors[0].specialties[0].description);
+                        div.append(p3);
+                        practice.append(div);
+                        
+                        var p2 = document.createElement("p");
+                        p2.setAttribute("style", "font-size:30px");
+                        p2.append("UID:");
+                        p2.append(" ");
+                        p2.append(obj.data[i].doctors[0].uid);
+                        div.append(p2);
+                    
+                        var p3 = document.createElement("p");
+                        p3.setAttribute("style", "font-size:40px");
+                        p3.append("Phone:");
+                        p3.append(" ");
+                        p3.append(obj.data[i].phones[0].number);
+                        div.append(p3);
+                        practice.append(div);
+                        }
+
+               }
+         }
+         xhr.send()
+      </script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="speciality.css">
+    <title>Specialities</title>
+  </head>
+  <body>
+      <header>
+          <div id="heading">
+            <nav>
+              <section>
+                      <a href="index.html"  id="brand">
+                              <h1>DOCTOR</h1> </a>
+              </section>
+                <ul id="nav">
+                    <li><a class="nav_item" href="index.html">HOME</a></li>
+                    <li><a class="nav_item" href="speciality.html">SPECIALITIES</a></li>
+                    <li><a class="nav_item" href="doctor.html">DOCTORS</a></li>
+                    <li><a class="nav_item" href="insurance.html">INSURANCE PLANS</a></li>
+                </ul>
+             </nav>
+          </div>
+    </header>
+	
+	<hr>
+    <div class="body-structure">
+              <h1 id="header">SPECIALITIES</h1>
+			    <table id="table">
+                        <tr>
+                            <th >Name</th>
+                            <th >Description</th>
+                            <th>Actor</th>
+                      </tr>
+				    <tbody id="tbody"></tbody>
+			    </table>
+    </div>
+    <footer class="foot">
+        <div class="divider"></div>
+       
+    <div class="copyright">
+        © 2019 Copyright to DOCTOR
+    </div>
+</footer> 
+   
+    <script>
+          // When the user scrolls down 50px from the top of the document, resize the header's font size
+          window.onscroll = function() {scrollFunction()};
+
+          function scrollFunction() {
+          if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+              document.getElementById("heading").style.fontSize = "25px";
+          document.getElementById("brand").style.fontSize = "40px";
+
+          } else {
+            document.getElementById("heading").style.fontSize = "28px";
+            document.getElementById("brand").style.fontSize = "40px";
+          }
+          }
+      var api_key = "2ca81ff4b2094d063f6fc80751950488";
+      var url = 'https://api.betterdoctor.com/2016-03-01/specialties?user_key=2ca81ff4b2094d063f6fc80751950488';
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET',url)
+        xhr.onreadystatechange = test
+        function test()
+         {
+           if(this.status==200 && this.readyState==4){
+             
+            var table = document.getElementById("table"); 
+            var t_body = document.getElementById("tbody");
+            var obj = JSON.parse(xhr.responseText);
+            for (var i = 0; i < 15; i++) {
+                var tr = document.createElement("tr"); //table row
+                 tr.setAttribute("class","trow")
+
+                var td1 = document.createElement("td"); //table data1
+                td1.setAttribute("class","tdata")
+                td1.innerHTML = obj.data[i].name;
+                tr.append(td1);
+
+                var td2 = document.createElement("td"); //table data2
+                td2.setAttribute("class","tdata")
+                td2.innerHTML = obj.data[i].description;
+                tr.append(td2);
+
+                var td3 = document.createElement("td"); //table data3
+                td3.setAttribute("class","tdata")
+                td3.innerHTML = obj.data[i].actor;
+                tr.append(td3);
+
+                t_body.append(tr); //append in table
+           }
+         }
+         }
+         xhr.send()
+    </script>
+  </body>
+  
+</html>

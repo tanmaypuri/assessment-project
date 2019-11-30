@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+body{
+  background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+  background: linear-gradient(to right, #25c481, #25b7c4);
+  font-family: 'Roboto', sans-serif;
+}
+
+section{
+  margin-left: 10px;
+  float: left;
+  font-size: 38px;
+  margin-bottom: 19px;
+  height: 50px;
+
+}
+#heading
+{
+  top: 0%;
+  left: 0%;
+  background-color:white;
+  padding: 0px 0px 0px 0px;
+  font-size: 30px; 
+  font-weight: bold;
+  position: fixed;
+  width: 100%;
+  margin-top: 0%;
+  transition: 0.2s;
+  height: 85px;
+}
+header h1{
+    display: inline-block;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
+	float: left;
+    margin-top: 18px;
+    margin-bottom: 20px;
+    margin-left: 12px;
+    color: teal;
+}
+nav ul{
+    display: inline;
+    padding: 0px;
+    float: right;
+    margin-right: 30px;
+    margin-top: 28px;
+}
+
+nav ul li{
+    display: inline-block;
+    list-style-type: none;
+    float: left;
+    margin-left: 12px;
+    font-family: roboto;
+}
+nav ul li a{
+    color: teal;
+	list-style-type: none;
+    text-decoration: none;
+}
+
+#nav{
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.nav_item:hover{
+    background-color: cadetblue;
+    padding: 16px;
+    color: white;
+}
+
+.body-structure{
+    text-align: center;
+    margin-top: 100px;
+    
+}
+
+#heading1{
+    color: white;
+        font-size: 35px;
+}
+#practicebio {
+    width: 50%;
+    border: 2px solid white;
+    margin-left: 325px;
+    margin-bottom: 40px;;
+    background-color: teal;
+    border-radius: 150px;;
+    font-family: sans-serif;
+    justify-content: center;
+  }
+ 
+  #practicebio:hover{
+    color: white;
+    transform: scale(1.1); 
+}
+
+#practice{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+
+.foot{
+    background-color: white;
+    text-align: center;
+    font-family: roboto;
+     height: 60px; 
+     margin-top: 155px; 
+    position: relative;
+    color: teal;
+}
+
+.resume a{
+    color: inherit;
+    text-decoration: none;
+ }
+ p{
+    font-size: 20px;
+ }
+ p:hover{
+    color:green; 
+    text-decoration:none; 
+    cursor:pointer; 
+ }
+ .copyright{
+    font-size: 20px;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+} 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}

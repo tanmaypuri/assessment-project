@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Home</title>
+</head>
+<body>
+        <header>
+                <div id="heading">
+                  <nav>
+                    <section>
+                            <a href="index.html"  id="brand">
+                                    <h1>DOCTOR</h1> </a>
+                    </section>
+                      <ul id="nav">
+                          <li><a class="nav_item" href="index.html">HOME</a></li>
+                          <li><a class="nav_item" href="speciality.html">SPECIALITIES</a></li>
+                          <li><a class="nav_item" href="doctor.html">DOCTORS</a></li>
+                          <li><a class="nav_item" href="insurance.html">INSURANCE PLANS</a></li>
+                      </ul>
+                   </nav>
+                </div>
+          </header>
+          
+            <div>
+                    <div class="form"><input type="text" placeholder="Search Doctor..." id="searchDoc"><br> 
+                        <button class="searchBtn" onclick="searchDoctor()"><i class="fa fa-search"></i></button></div> 
+                         
+                        <ul class="slideshow">
+                           
+                            <li><span></span></li>
+                            <li><span></span></li>
+                            <li><span></span></li>
+                            <li><span></span></li>
+                            <li><span></span></li>
+                            <li><span></span></li>
+                            <li><span></span></li>
+                             
+                    </ul>
+                    
+                     
+             </div>
+            
+        <div class="background">
+                <table id="table"  align="center"></table>
+                <div id="Bio" style="color:black; "></div>
+        </div> 
+        
+
+        <footer class="foot">
+                <div class="divider"></div>
+                <div class="resume">
+                    <a href="https://tanmaypuri.github.io/resume/"><p>RESUME1</a>
+                        <a href="https://simrandeep764.github.io/resume/"><p>RESUME2</a>
+                </div>
+            <div class="copyright">
+                © 2019 Copyright to DOCTOR
+            </div>
+        </footer> 
+        <script >
+             window.onscroll = function() {scrollFunction()};
+
+                function scrollFunction() {
+                if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                    document.getElementById("heading").style.fontSize = "25px";
+                document.getElementById("brand").style.fontSize = "40px";
+                
+                } else {
+                  document.getElementById("heading").style.fontSize = "28px";
+                  document.getElementById("brand").style.fontSize = "40px";
+                }
+                }
+            function searchDoctor(){
+                var name = document.getElementById("searchDoc").value;
+                    //create table
+                    var table = document.getElementById("table");
+                    var bio = document.getElementById("Bio");
+                    bio.innerHTML = "";
+                    table.innerHTML = "";
+                    var thead1 = document.createElement("thead");
+                    thead1.setAttribute("class","th")
+                    thead1.innerHTML = "";
+                    //create tableRow
+                    var tr1 = document.createElement("tr");
+                   
+                    //table heading
+                    var th1 = document.createElement("th");
+                    th1.setAttribute("class","picHead")
+                    th1.innerHTML = "PICTURE";
+                    tr1.append(th1);
+                    //table heading
+                    var th2 = document.createElement("th");
+                    th2.setAttribute("class","namesHead")
+                    th2.innerHTML = "NAME";
+                    tr1.append(th2);
+                    //table headingS
+                    var th3 = document.createElement("th");
+                    th3.setAttribute("class","titleHead")
+                    th3.setAttribute("style", "width:260px")
+                    th3.innerHTML = "TITLE";
+                    tr1.append(th3);
+                    thead1.append(tr1);
+                    table.append(thead1);
+                    table.style.display = "block";
+                    var tbody1 = document.createElement("tbody");
+                    tbody1.setAttribute("id", "tbody");
+                    tbody1.innerHTML = "";    
+
+                    var url = "https://api.betterdoctor.com/2016-03-01/doctors?name="+name +"&skip=0&user_key=2ca81ff4b2094d063f6fc80751950488";
+                    var xhr = new XMLHttpRequest()
+                    xhr.open('GET',url)
+                    
+                    xhr.onreadystatechange = test
+                    function test()
+                    {
+                    if(this.status==200 && this.readyState==4){
+                        
+                        var obj = JSON.parse(xhr.responseText);
+                        console.log(obj.data[0].profile.last_name);
+                        for (var i = 0; i < obj.data.length; i++) {
+                            var tr = document.createElement("tr");
+                            tr.setAttribute("id", i);
+                            
+
+                            var td3 = document.createElement("td");
+                            var img = document.createElement("img");
+                            img.setAttribute("src", obj.data[i].profile.image_url);
+                            td3.append(img);
+                            tr.append(td3);
+
+                            var td1 = document.createElement("td");
+                            var a = document.createElement("a");
+                            a.setAttribute("href", "#");
+                            a.setAttribute("class", "name");
+                            a.append(
+                                obj.data[i].profile.first_name + " " + obj.data[i].profile.last_name
+                            );
+                            td1.append(a);
+
+                            var td4  = document.createElement("td");
+                            var tit = document.createElement("tit");
+                            tit.setAttribute("class", "title")
+                            tit.setAttribute("src", obj.data[i].profile.title)
+                            td4.append(tit)
+
+                            a.addEventListener("click", function(e) {
+                                table.innerHTML = "BIO";
+                                var id = parseInt(e.target.parentNode.parentNode.id);
+                                var h1 = document.createElement("h1");
+                                h1.setAttribute("class","full-name")
+                                h1.innerHTML =
+                                obj.data[id].profile.first_name +
+                                " " +
+                                obj.data[id].profile.last_name;
+                                bio.append(h1);
+                                var p = document.createElement("p");
+                                p.setAttribute("class","address")
+                                p.innerHTML =
+                                obj.data[id].practices[0].visit_address.street +
+                                " " +
+                                obj.data[id].practices[0].visit_address.city +
+                                " " +
+                                obj.data[id].practices[0].visit_address.state;
+
+                                bio.append(p);
+                                var img = document.createElement("img");
+                                
+                                img.setAttribute("src", obj.data[id].profile.image_url);
+                                var p1 = document.createElement("p");
+                                p1.setAttribute("class","image-text")
+                                p1.append("Picture:");
+                                p1.append(" ");
+                                p1.append(img);
+                                bio.append(p1);
+                                var p2 = document.createElement("p");
+                                p2.setAttribute("class","spl")
+                                p2.append("Specialist:");
+                                p2.append(" ");
+                                p2.append(obj.data[id].specialties[0].uid);
+                                bio.append(p2);
+                            });
+                            tr.append(td1);
+                            var td2 = document.createElement("td");
+                            td2.innerHTML = obj.data[i].profile.title;
+                            tr.append(td2);
+                            tbody1.append(tr);
+                            table.append(tbody1);
+                            }
+                                        
+
+                    }
+                }
+                xhr.send()
+            }
+      </script>
+      
+ </body>
+</html>
