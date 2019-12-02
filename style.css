@@ -3,10 +3,13 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 html{
+  margin: 0%;
+  padding: 0%;
   overflow-x: hidden;
 }
 body{
-    margin: 0;
+  padding: 0%;
+  margin: 0%;
     background: -webkit-linear-gradient(left, #25c481, #25b7c4);
   background: linear-gradient(to right, #25c481, #25b7c4);
     
@@ -18,11 +21,12 @@ section{
   font-size: 38px;
   margin-bottom: 19px;
   height: 50px;
-
+  z-index: 22234;
 }
 #heading
 {
     top: 0%;
+    z-index: 22234;
   background-color: white;
   padding: 0px 0px 0px 0px;
   font-size: 30px; 
@@ -63,6 +67,7 @@ nav ul li{
   float: left;
   margin-left: 12px;
   font-family: roboto;
+  letter-spacing: 0px;
 }
 nav ul li a{
   color: teal;
@@ -82,10 +87,12 @@ nav ul li a{
   color: white;
 }
 
+.background{
+  top: -50px;
+}
 #table {
     width: 800px;
     font-size: 20px;
-  
     text-align: center;
     color: white;
     margin-top:200px;
@@ -106,7 +113,6 @@ nav ul li a{
 .namesHead{
     color: white;
     width: 260px;
-    
     font-family: sans-serif;
 }
   th,tr{
@@ -124,6 +130,7 @@ nav ul li a{
     color: white;
     font-size: 20px;;
     font-family: roboto;
+    text-align: center;
   }
   .name:hover {
     font-size: xx-large;
@@ -186,6 +193,13 @@ nav ul li a{
     color: black;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 19px;
+    border: 3px solid teal;
+  }
+  #searchDoc:focus {
+    outline:none;
+}
+  .searchBtn:focus{
+      outline:none;
   }
 
   .searchBtn{
@@ -196,11 +210,12 @@ nav ul li a{
     background: teal;
     color: white;
     font-size: 17px;
-    border: 1px solid grey;
-    border-left: none; /* Prevent double borders */
+    /* border: 3px solid teal; */
+    border-left: none; 
     cursor: pointer;
     border-radius: 25px;
     border-collapse: collapse;
+    border: 0px none;
   }
   .searchBtn:hover {
     color: teal;
@@ -314,12 +329,122 @@ nav ul li a{
           opacity: 1;
    }
   
-   ::-webkit-scrollbar {
-    width: 6px;
+::-webkit-scrollbar {
+    width: 10px;
 } 
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 0 10px #feffff; 
 } 
 ::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 0 10px #09f894; 
+}
+
+.ani {
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 250px;
+  padding: 0;
+  text-align:center;
+  background-color:rgba(0, 0, 0, 0.2);
+  z-index: -22234;
+}
+
+.px {
+  position: relative;
+  font-family: roboto;
+  text-transform: uppercase;
+  font-size: 50px;
+  letter-spacing: 3px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #000, #fff, #000);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 3s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}
+
+.custTestimonial h1{
+  margin-left: 500px;
+  margin-top: 250px;
+}
+
+.demo{ 
+  background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+  background: linear-gradient(to right, #25c481, #25b7c4);
+  margin-top: 50px;
+  z-index: -22234;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 450px;
+}
+.testimonial{
+padding: 35px 50px;
+margin: 0 20px 30px;
+border-radius: 0 70px 0 70px;
+border: 5px solid white;
+border-left: none;
+border-right: none;
+text-align: center;
+}
+.testimonial .pic{
+display: inline-block;
+width: 100px;
+height: 100px;
+border-radius: 50%;
+margin-bottom: 20px;
+overflow: hidden;
+}
+.testimonial .pic img{
+width: 100%;
+height: 140px;
+}
+.testimonial .title{
+display: block;
+margin: 0 0 7px 0;
+font-size: 25px;
+font-weight: 600;
+color: white;
+font-family: roboto;
+letter-spacing: 1px;
+text-transform: uppercase;
+font-family: monospace;
+}
+.testimonial .post{
+display: block;
+font-size: 15px;
+color: #fff;
+text-transform: capitalize;
+margin-bottom: 20px;
+font-family: monospace;
+}
+.testimonial .description{
+font-size: 16px;
+color: #fff;
+line-height: 30px;
+font-family: sans-serif;
+
+}
+.owl-theme .owl-controls{ margin-top: 0; }
+.owl-theme .owl-controls .owl-page span{
+background: #fff;
+opacity: 0.8;
+transition: all 0.3s ease 0s;
+}
+.owl-theme .owl-controls .owl-page.active span{ background: #3366FF; }
+
+.dummypic{
+  height: 120px;
+  width: 100px;
+  border-radius: 40px;
 }

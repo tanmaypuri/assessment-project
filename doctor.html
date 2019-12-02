@@ -19,7 +19,7 @@
                         <li><a class="nav_item" href="index.html">HOME</a></li>
                         <li><a class="nav_item" href="speciality.html">SPECIALITIES</a></li>
                         <li><a class="nav_item" href="doctor.html">DOCTORS</a></li>
-                        <li><a class="nav_item" href="insurance.html">INSURANCE PLANS</a></li>
+                        <li><a class="nav_item" href="insurance.html">INSURANCE</a></li>
                     </ul>
                  </nav>
               </div>
@@ -80,8 +80,9 @@
                             obj.data[i].visit_address.state;
                         div.append(p);
                         var img = document.createElement("img");
-                        img.setAttribute("src", obj.data[i].doctors[0].profile.image_url);
-                        img.setAttribute("style","border-radius:80px")
+                        img.setAttribute("src", "dummy.jpg");
+                        img.setAttribute("style","height:120px")
+                        // img.setAttribute("style","border-radius:10px")
                         var p1 = document.createElement("p");
                         p1.setAttribute("style", "font-size:40px");
                         p1.append(" ");
