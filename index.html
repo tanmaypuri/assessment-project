@@ -170,7 +170,7 @@
                     tbody1.setAttribute("id", "tbody");
                     tbody1.innerHTML = "";    
 
-                    var url = "https://api.betterdoctor.com/2016-03-01/doctors?name="+name +"&skip=0&user_key=2ca81ff4b2094d063f6fc80751950488";
+                    var url = "https://api.betterdoctor.com/2016-03-01/doctors?name="+name +"&user_key=2ca81ff4b2094d063f6fc80751950488";
                     var xhr = new XMLHttpRequest()
                     xhr.open('GET',url)
                     
@@ -184,8 +184,6 @@
                         for (var i = 0; i < obj.data.length; i++) {
                             var tr = document.createElement("tr");
                             tr.setAttribute("id", i);
-                            
-
                             var td3 = document.createElement("td");
                             var img = document.createElement("img");
                             img.setAttribute("src", "dummy.jpg");
